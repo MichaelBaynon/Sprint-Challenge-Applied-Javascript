@@ -13,15 +13,15 @@ class TabLink {
     if (this.tabData === 'all') {
       document.querySelectorAll('.cards')
       // If `all` is true, select all cards regardless of their data attribute values
-      this.cards = document.querySelectorAll('placeholder');
+      this.cards = document.querySelectorAll('.cards');
     } else {
       // else if `all` is false, only select the cards with matching this.tabData values
-      this.cards = document.querySelector('.this.tabData');
+      this.cards = document.querySelector(`.card[data-tab='${this.tabData}']`);
 
       // <- Delete this comment block when you work on the if statement
 
       // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. Pass in a card object to the TabCard class. 
-      this.cards = Array.from(this.cards).map();
+      this.cards = Array.from(this.cards).map(xyz => new TabCard(xyz));
 
       // Add a click event that invokes this.selectTab
       this.tabElement.addEventListener('click', () => this.selectTab());
@@ -33,13 +33,16 @@ class TabLink {
     const tabs = document.querySelectorAll('.tab');
 
     // Iterate through the NodeList removing the .active-tab class from each element
-    tabs.forEach(item => item.classList.remove('.active-tab'));
+    tabs.forEach(item => item.classList.remove('active-tab'));
 
     // Select all of the elements with the .card class on them
     const cards = document.querySelectorAll('.card');
 
     // Iterate through the NodeList setting the display style each one to 'none'
-    cards.forEach()
+    cards.forEach(cardX => cardX.style.display = 'none')
+    // console.log('.cards');
+
+
 
     // Add a class of ".active-tab" to this.tabElement
     this.tabElement.classList.add('.active-tab');
